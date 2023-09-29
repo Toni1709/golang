@@ -1,0 +1,59 @@
+	Luas Trapesium
+
+	var a, b, t int
+
+	fmt.Print("Masukkan Nilai A : ")
+	fmt.Scanln(&a)
+
+	fmt.Print("Masukkan Nilai T : ")
+	fmt.Scanln(&b)
+
+	fmt.Print("Masukkan Nilai t : ")
+	fmt.Scanln(&t)
+
+	L := 0.5 * float64(a + b) * float64(t)
+
+	fmt.Println(L)
+
+	Kelipatan 7
+
+	var n int
+	fmt.Print("Masukkan Nilai n : ")
+	fmt.Scanln(&n)
+
+	isFound := false
+	for i := 2; i < n; i++ {
+		if n % i == 0 {
+			isFound = true
+			fmt.Println("Bukan Prima")
+			break
+		}
+	}
+	if isFound == false {
+		fmt.Println("Ini Prima")		
+	}
+
+	Array
+
+		Contoh 1
+		listName := [5]string{}
+		scoreData := [10]int{1, 2, 3}
+
+		scoreData[4] = 99
+		listName[0] = "Toni"
+
+		fmt.Println(listName, scoreData)
+
+		// Contoh 2
+		scoreDateNew := []int{1, 2, 3, 4}
+
+		slices.Delete(scoreDateNew, 1, 2)
+
+		fmt.Println(scoreDateNew)
+
+		Contoh 3
+		scoreData := []int{1, 2, 3, 4, 5}
+		
+		for i, v := range scoreData {
+			fmt.Println(i, v)
+		}

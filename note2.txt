@@ -1,0 +1,183 @@
+=========================================================================================================
+
+package main
+
+import (
+	"fmt"
+)
+
+func main() {
+	result, message := tambah(10, 10)
+	fmt.Println(result, message)
+}
+func tambah(a int, b int) (int, string) {	
+	jumlah := a + b
+	return jumlah, "berhasil"
+}
+
+=========================================================================================================
+
+package main
+
+import "fmt"
+
+func main() {
+	result := ArrayMerge(
+		[]string{"Budi", "Badu"},
+		[]string{"Badu", "rima", "anto"},
+	)
+	fmt.Println(result)
+}
+
+func ArrayMerge(arrayA, arrayB []string) []string {
+	var result = []string{}
+	var dataMap = map[string]bool{}
+	arrayA = append(arrayA, arrayB...)
+
+	isFound := false
+	for _, v := range arrayA {
+		_, isFound = dataMap[v]
+		if isFound == false {
+			result = append(result, v)
+			dataMap[v] = true
+		}
+	}
+	fmt.Println(result)
+	return []string{}
+}
+
+=========================================================================================================
+
+package main
+
+import "fmt"
+
+func main() {
+	var age int = 10
+	var ageAddress *int = &age
+
+	fmt.Println(ageAddress)
+	fmt.Println(*ageAddress)
+}
+
+=========================================================================================================
+
+package main
+
+import "fmt"
+
+func main() {
+	var age int = 10
+	ubahnilai(&age)
+	fmt.Println(age)
+}
+func ubahnilai(ageAdress *int)  {
+	*ageAdress = 21
+	
+}
+
+=========================================================================================================
+
+package main
+
+import "fmt"
+
+type Product struct {
+	Name  string
+	Price int
+	Stoct int
+}
+
+type ProdukInterface interface {
+	Init()
+	TambahStok()
+}
+
+func (produk *Product) Init() {
+	produk.Name = "Baju"
+	produk.Price = 35000
+	produk.Stoct = 200
+
+}
+
+func (produk *Product) TambahStok() {
+	produk.Stoct += 10
+}
+
+func main() {
+	var produkInterface ProdukInterface
+	var produk Product
+
+	produkInterface = &produk
+
+	produkInterface.Init()
+	produkInterface.TambahStok()
+
+	fmt.Println(produk)
+}
+
+=========================================================================================================
+
+package main
+
+import (
+	"fmt"
+)
+
+func main() {
+	tampil(10)
+	tampil("satu")
+	// tampil(1.0)
+}
+
+func tampil(data interface{}) {
+	var result interface{}
+	switch data.(type){
+	case int :
+		result = data.(int) * 3
+	case string :
+		result = data.(string) + " lebih"
+	}
+	fmt.Println(result)
+}
+
+=========================================================================================================
+
+package main
+
+import "fmt"
+
+func main() {
+	defer func() {
+		result := recover()
+		if result != nil {			
+			fmt.Println(result)
+		}
+	}()
+	fmt.Println("A")
+	fmt.Println("C")
+
+	panic("Ada panic antara C dan D")
+
+	fmt.Println("D")
+
+}
+
+=========================================================================================================
+
+package main
+
+import (
+	"fmt"
+)
+
+func main() {
+	fmt.Println("A")
+	defer func ()  {
+		err := recover()
+		if err != nil {
+			fmt.Println(err)
+		}
+	}()
+	fmt.Println("C")
+}
